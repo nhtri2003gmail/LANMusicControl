@@ -12,7 +12,7 @@ defGate = Op.PartGate()
 def is_host(HOST):
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     try:
-        s.settimeout(0.00015)
+        s.settimeout(0.0015)
         s.connect((HOST, PORT))
         s.sendall(b"Hello Johnathan Huu Tri!")
     except:
@@ -26,10 +26,9 @@ for i in range(0,256):
         HOST = defGate + str(i)
         break
 
-print('[+] Connected to server: ' + HOST)
-print()
-
 while True:
+    print('[+] Connected to server: ' + HOST)
+    print()
     print("SERVER:")
     print("start: to start listening to music :D")
     print("stop : to stop completely the music")
