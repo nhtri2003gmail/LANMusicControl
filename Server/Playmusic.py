@@ -21,7 +21,7 @@ except:
 os.chdir(path)
 
 while True:
-    filename = str(playlist[random.randrange(0,len(playlist)+1)])
+    filename = str(playlist[random.randrange(0,len(playlist))]) ## e.g: len=25 ==> 0->24
     try:
         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             s.connect((HOST, PORT))
@@ -29,4 +29,4 @@ while True:
     except:
         sys.exit()
     playsound(f'{path}\\{filename}')
-    time.sleep(5) ## Break for a while before turning to another song
+    time.sleep(random.randrange(1,3)) ## Break for a while before turning to another song

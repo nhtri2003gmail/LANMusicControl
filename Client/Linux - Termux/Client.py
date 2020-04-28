@@ -1,3 +1,5 @@
+#!/user/bin/python3
+
 import os
 import socket
 import time
@@ -13,9 +15,9 @@ defGate = Op.PartGate() ## Get part of defalt gateway (192.168.xxx)
 def is_host(HOST):
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     try:
-        s.settimeout(0.0015)
+        s.settimeout(0.015)
         s.connect((HOST, PORT))
-        s.sendall(b"Welcome!")
+        s.sendall(b"Welcome from Linux!")
     except:
         return False
     else:
@@ -27,6 +29,12 @@ for i in range(0,256):
     if is_host(defGate + str(i)):
         HOST = defGate + str(i)
         break
+
+if HOST='':
+    print("Cannot connect to server!")
+    print("Exiting...")
+    time.sleep(1.5)
+    sys.exit()
 
 
 #####################################################

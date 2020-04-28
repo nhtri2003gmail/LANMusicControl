@@ -15,7 +15,7 @@ def is_host(HOST):
     try:
         s.settimeout(0.0015)
         s.connect((HOST, PORT))
-        s.sendall(b"Welcome!")
+        s.sendall(b"Welcome from Windows!")
     except:
         return False
     else:

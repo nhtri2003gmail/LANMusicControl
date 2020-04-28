@@ -5,8 +5,8 @@ def PartGate():
     os.system('ifconfig | grep 192 > ifconfig.txt')
     with open("ifconfig.txt", 'rt') as f:
         ip = f.read()
-    os.system('del ifconfig.txt')
-    t = ip.split('\n')
+    os.system('rm ifconfig.txt')
+    t = ip.split(' ') ## Wrong at this place
     
     defWay = str(t[len(t)-1])
     
