@@ -3,16 +3,18 @@ import socket
 import time
 import sys
 
+import Op
+
 PORT = 62584
-localIp = socket.gethostbyname(socket.gethostname())
-t = localIp.split('.')
-defIp = str(t[0]) + '.' + str(t[1]) + '.' + str(t[2]) + '.'
+HOST = ''
+defGate = Op.PartGate()
 
 def is_host(HOST):
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     try:
         s.settimeout(0.00015)
         s.connect((HOST, PORT))
+        s.sendall(b"Hello Johnathan Huu Tri!")
     except:
         return False
     else:
@@ -20,8 +22,8 @@ def is_host(HOST):
     s.close()
 
 for i in range(0,256):
-    if is_host(defIp + str(i)):
-        HOST = defIp + str(i)
+    if is_host(defGate + str(i)):
+        HOST = defGate + str(i)
         break
 
 print('[+] Connected to server: ' + HOST)
