@@ -7,24 +7,30 @@ import Op
 
 PORT = 62584
 HOST = ''
-defGate = Op.PartGate()
+defGate = Op.PartGate() ## Get part of defalt gateway (192.168.xxx)
 
+## Find which host is opening port 62584
 def is_host(HOST):
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     try:
         s.settimeout(0.0015)
         s.connect((HOST, PORT))
-        s.sendall(b"Hello Johnathan Huu Tri!")
+        s.sendall(b"Welcome!")
     except:
         return False
     else:
         return True
     s.close()
 
+## Loop from 1 to 255 (e.g: 192.168.1.xxx)
 for i in range(0,256):
     if is_host(defGate + str(i)):
         HOST = defGate + str(i)
         break
+
+
+#####################################################
+
 
 while True:
     print('[+] Connected to server: ' + HOST)
@@ -35,7 +41,7 @@ while True:
     print("exit : to shutdown the server")
     print("CLIENT:")
     print("000  : to exit this client")
-    m = input("Message: ")
+    m = input("> ")
     
     if m=='000':
         break
