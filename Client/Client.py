@@ -3,22 +3,36 @@ import socket
 import time
 import sys
 
-try:
-    with open('client.conf', 'rt') as f:
-        HOST = f.read()
-except:
-    print("Cannot find client.conf!")
-    print('Exiting...')
-    time.sleep(1.5)
-    sys.exit()
-
 PORT = 62584
+localIp = socket.gethostbyname(socket.gethostname())
+t = localIp.split('.')
+defIp = str(t[0]) + '.' + str(t[1]) + '.' + str(t[2]) + '.'
+
+def is_host(HOST):
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    try:
+        s.settimeout(0.00015)
+        s.connect((HOST, PORT))
+    except:
+        return False
+    else:
+        return True
+    s.close()
+
+for i in range(0,256):
+    if is_host(defIp + str(i)):
+        HOST = defIp + str(i)
+        break
+
+print('[+] Connected to server: ' + HOST)
+print()
 
 while True:
+    print("SERVER:")
     print("start: to start listening to music :D")
     print("stop : to stop completely the music")
     print("exit : to shutdown the server")
-    print()
+    print("CLIENT:")
     print("000  : to exit this client")
     m = input("Message: ")
     
