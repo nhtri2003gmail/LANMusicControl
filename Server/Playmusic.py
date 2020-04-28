@@ -29,4 +29,4 @@ while True:
     except:
         sys.exit()
     playsound(f'{path}\\{filename}')
-    time.sleep(0.2)
+    time.sleep(5) ## Break for a while before turning to another song
