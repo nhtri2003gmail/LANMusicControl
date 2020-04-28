@@ -30,7 +30,7 @@ for i in range(0,256):
         HOST = defGate + str(i)
         break
 
-if HOST='':
+if HOST=='':
     print("Cannot connect to server!")
     print("Exiting...")
     time.sleep(1.5)
